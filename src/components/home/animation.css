@@ -1,0 +1,54 @@
+@keyframes effect_1  {
+    from {
+       left:0px;
+       top:-3px;
+    }
+    
+    to {
+       left:0px;
+       top:3px;
+    }
+ 
+}
+
+@keyframes effect_2  {
+    from {
+       left:0px;
+       top:3px;
+    }
+    
+    to {
+       left:0px;
+       top:-3px;
+    }
+ 
+}
+
+@media only screen and (min-width: 900px) {
+    .god_1 {
+        height:250px;
+        position:relative;
+        animation:effect_1 1s ease-in-out alternate infinite;
+    }
+     
+    .god_2 {
+        height:250px;
+        position:relative;
+        animation:effect_2 1s ease-in-out alternate infinite;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .god_1 {
+        height:150px;
+        position:relative;
+        animation:effect_1 1s ease-in-out alternate infinite;
+    }
+     
+    .god_2 {
+        height:150px;
+        position:relative;
+        animation:effect_2 1s ease-in-out alternate infinite;
+    }
+}
+

@@ -1,0 +1,708 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.63.0-nightly",
+            "commitHash": "ee160f2f5e73b6f5954bc33f059c316d9e8582c4",
+            "commitDate": "2022-05-23",
+            "channel": "Nightly",
+            "short": "rustc 1.63.0-nightly (ee160f2f5 2022-05-23)"
+        },
+        "contractCrate": {
+            "name": "convertcarbon-nft-mint",
+            "version": "0.0.0"
+        },
+        "framework": {
+            "name": "elrond-wasm",
+            "version": "0.30.0"
+        }
+    },
+    "docs": [
+        "One of the simplest smart contracts possible,",
+        "it holds a single variable in storage, which anyone can increment."
+    ],
+    "name": "NftMint",
+    "constructor": {
+        "inputs": [
+            {
+                "name": "start_timestamp",
+                "type": "u64"
+            },
+            {
+                "name": "end_timestamp",
+                "type": "u64"
+            },
+            {
+                "name": "treasury_address",
+                "type": "Address"
+            },
+            {
+                "name": "opt_payment_token_id",
+                "type": "optional<TokenIdentifier>",
+                "multi_arg": true
+            }
+        ],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "publicMint",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "adminMint",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "withdrawFunds",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "opt_token_id",
+                    "type": "optional<TokenIdentifier>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_nonce",
+                    "type": "optional<u64>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_amount",
+                    "type": "optional<BigUint>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "viewContractSetting",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "ContractSetting"
+                }
+            ]
+        },
+        {
+            "name": "viewCollectionSettings",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<CollectionSetting>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "viewUserAccount",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "variadic<UserAccount>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "setTreasuryAddress",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "treasury_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "issueCollection",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "payableInTokens": [
+                "EGLD"
+            ],
+            "inputs": [
+                {
+                    "name": "collection_name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "collection_ticker",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setLocalRoles",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "addCollectionMetadata",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "collection_size",
+                    "type": "u32"
+                },
+                {
+                    "name": "admin_mint_allow_size",
+                    "type": "u32"
+                },
+                {
+                    "name": "max_limit_per_address",
+                    "type": "u32"
+                },
+                {
+                    "name": "token_max_buy_limit",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "discount_percentage",
+                    "type": "u32"
+                },
+                {
+                    "name": "lottery_ticket",
+                    "type": "u32"
+                },
+                {
+                    "name": "rvm_token_reward_percentage",
+                    "type": "u32"
+                },
+                {
+                    "name": "mint_price",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "minted_count",
+                    "type": "u32"
+                },
+                {
+                    "name": "collection_royalties",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "collection_tags",
+                    "type": "bytes"
+                },
+                {
+                    "name": "collection_image_uri",
+                    "type": "bytes"
+                },
+                {
+                    "name": "collection_metadata_uri",
+                    "type": "bytes"
+                },
+                {
+                    "name": "collection_metadata_no_https_uri",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getStartTimestamp",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "setStartTimestamp",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "start_timestamp",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getEndTimestamp",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "setEndTimestamp",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "end_timestamp",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getPaymentTokenId",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "setPaymentTokenId",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "payment_token_id",
+                    "type": "TokenIdentifier"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getLastCollectionId",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionName",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionIdentifer",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionSize",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getAdminMintAllowSize",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getMaxLimitPerAddress",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getTokenMaxBuyLimit",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "getDiscountPercentage",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getLotteryTicket",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getRvmTokenRewardPercentage",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getMintPrice",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "getMintedCount",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionRoyalties",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionTags",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionImageUri",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionMetadataUri",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionMetadataNoHttpsUri",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionNftPurchasedCountPerWallet",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionNftPurchasedAddress",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "variadic<Address>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "getMintedNftIds",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "variadic<u32>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "getTreasuryAddress",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "Address"
+                }
+            ]
+        }
+    ],
+    "hasCallback": true,
+    "types": {
+        "CollectionSetting": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "collection_name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "collection_identifier",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "collection_size",
+                    "type": "u32"
+                },
+                {
+                    "name": "admin_mint_allow_size",
+                    "type": "u32"
+                },
+                {
+                    "name": "max_limit_per_address",
+                    "type": "u32"
+                },
+                {
+                    "name": "token_max_buy_limit",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "discount_percentage",
+                    "type": "u32"
+                },
+                {
+                    "name": "lottery_ticket",
+                    "type": "u32"
+                },
+                {
+                    "name": "rvm_token_reward_percentage",
+                    "type": "u32"
+                },
+                {
+                    "name": "mint_price",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "minted_count",
+                    "type": "u32"
+                }
+            ]
+        },
+        "ContractSetting": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "start_timestamp",
+                    "type": "u64"
+                },
+                {
+                    "name": "end_timestamp",
+                    "type": "u64"
+                }
+            ]
+        },
+        "UserAccount": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "collection_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "collection_nft_purchased_count",
+                    "type": "u32"
+                },
+                {
+                    "name": "max_limit_per_address",
+                    "type": "u32"
+                }
+            ]
+        }
+    }
+}

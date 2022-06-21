@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="304.08" height="78.345" viewBox="0 0 304.08 78.345">
+  <defs>
+    <image id="image" width="13" height="20" xlink:href="Group%205-image.png"/>
+  </defs>
+  <g id="Group_5" data-name="Group 5" transform="translate(-66 -2877)">
+    <g id="Group_2" data-name="Group 2">
+      <g id="Address_1">
+        <text id="Beedstrasse_54_Dusseldorf_Germany" data-name="Beedstrasse 54, Dusseldorf Germany" transform="translate(94.08 2893.345)" fill="#fff" font-size="15.24" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Beedstrasse 54, Dusseldorf Germany</tspan></text>
+        <use id="location-icon-png-27" transform="translate(70 2877)" xlink:href="#image"/>
+      </g>
+    </g>
+    <g id="Group_3" data-name="Group 3">
+      <g id="Address_2">
+        <text id="Str._Lapusului_19_Oradea_Bihor_Romania" data-name="Str. Lapusului 19, Oradea, Bihor, Romania" transform="translate(94.08 2923.345)" fill="#fff" font-size="15.24" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Str. Lapusului 19, Oradea, Bihor, Romania</tspan></text>
+        <use id="location-icon-png-27-2" data-name="location-icon-png-27" transform="translate(70 2907)" xlink:href="#image"/>
+      </g>
+    </g>
+    <g id="Group_4" data-name="Group 4">
+      <g id="Email_Address">
+        <text id="office_convertcarbon.eu" data-name="office@convertcarbon.eu" transform="translate(94.08 2951.345)" fill="#fff" font-size="15.24" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">office@convertcarbon.eu</tspan></text>
+        <image id="email" width="21" height="14" transform="translate(66 2939)" xlink:href="Group%205-image2.png"/>
+      </g>
+    </g>
+  </g>
+</svg>

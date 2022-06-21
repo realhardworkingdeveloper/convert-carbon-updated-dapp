@@ -1,0 +1,15 @@
+{
+  "short_name": "logo",
+  "name": "ConvertCarbon",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "125x125",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#b3294e",
+  "background_color": "#f5f5f5"
+}
